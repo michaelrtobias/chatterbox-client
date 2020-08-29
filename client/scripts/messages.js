@@ -6,4 +6,9 @@ class Messages {
   }
 
   // methods
+
+  // one method will call MessageView.render and input it into MessagesView.js
+
+  // checkInput
+    // event.preventDefault();
 }

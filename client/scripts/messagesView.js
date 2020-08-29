@@ -6,7 +6,10 @@ var MessagesView = {
   initialize: function() {
   },
 
-  render: function() {
+  renderMessage: function(message) {
+    // calls messageView.render with the given message to get the template
+    // append the arranged message to $chats
+    //
   }
 
 };

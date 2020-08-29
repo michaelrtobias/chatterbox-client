@@ -3,4 +3,7 @@ class Friends {
 
   }
 
+  //befriending function
+
+
 }
