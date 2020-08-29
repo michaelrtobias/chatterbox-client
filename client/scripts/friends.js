@@ -1,4 +1,6 @@
-var Friends = {
+class Friends {
+  constructor() {
 
+  }
 
-};
+}

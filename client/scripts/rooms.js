@@ -1,4 +1,6 @@
-var Rooms = {
+class Rooms {
+  constructor() {
 
+  }
 
-};
+}

@@ -5,6 +5,7 @@ var App = {
   username: 'anonymous',
 
   initialize: function() {
+    // creates a property of the inputted username
     App.username = window.location.search.substr(10);
 
     FormView.initialize();
@@ -17,6 +18,7 @@ var App = {
 
   },
 
+  // (GET)
   fetch: function(callback = ()=>{}) {
     Parse.readAll((data) => {
       // examine the response from the server request:
@@ -25,6 +27,10 @@ var App = {
       callback();
     });
   },
+
+  // (POST) create save method
+
+
 
   startSpinner: function() {
     App.$spinner.show();
