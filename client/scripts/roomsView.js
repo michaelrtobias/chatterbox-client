@@ -11,7 +11,8 @@ var RoomsView = {
   },
 
   // grab all rooms.js objects (titles of rooms) and input the names of the rooms into the Room option/selection box
-  renderRoom: function() {
+  renderRoom: function(roomName) {
+    RoomsView['$select'].append(`<option><%=roomName%></option>`);
   }
 
 };

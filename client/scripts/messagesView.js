@@ -9,7 +9,7 @@ var MessagesView = {
   renderMessage: function(message) {
     // calls messageView.render with the given message to get the template
     // append the arranged message to $chats
-    //
+    MessagesView['$chats'].append(MessageView.render(message));
   }
 
 };
