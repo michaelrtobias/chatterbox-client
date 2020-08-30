@@ -16,21 +16,22 @@ var App = {
     App.startSpinner();
     App.fetch(App.stopSpinner);
 
+    setInterval(App.fetch, 3000);
   },
 
-  // (GET)
+
   fetch: function(callback = ()=>{}) {
     Parse.readAll((data) => {
-      // examine the response from the server request:
+      Rooms.update(data.results, RoomsView.render);
+      Messages.update(data.results);
+
+      if (!data.results || !data.results.length) { return; }
+
       console.log(data);
 
       callback();
     });
   },
-
-  // (POST) create save method
-
-
 
   startSpinner: function() {
     App.$spinner.show();

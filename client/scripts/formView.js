@@ -11,7 +11,17 @@ var FormView = {
     // Stop the browser from submitting the form
     event.preventDefault();
 
-    console.log('click!');
+    var message = {
+      room: Rooms.selected || 'lobby',
+      text: FormView.$form.find('#message').val(),
+      username: App.username
+    };
+
+    Parse.create(message, (data) => {
+      _.extend(message, data);
+      Messages.add(message, MessagesView.render);
+    });
+
   },
 
   setStatus: function(active) {

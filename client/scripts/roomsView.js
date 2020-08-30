@@ -1,17 +1,38 @@
 var RoomsView = {
 
-  // Shawn notes: actual 'Add Room' button
   $button: $('#rooms button'),
-  // Shawn notes: Room option/selection box
-  // empty <select></select> at the moment
   $select: $('#rooms select'),
 
   initialize: function() {
+    RoomsView.$select.on('change', RoomsView.handleChange);
+    RoomsView.$button.on('click', RoomsView.handleClick);
   },
 
-  // grab all rooms.js objects (titles of rooms) and input the names of the rooms into the Room option/selection box
-  renderRoom: function(roomName) {
-    RoomsView['$select'].append(`<option><%=roomName%></option>`);
-  }
+  render: function() {
+    RoomsView.$select.html('');
+    Rooms
+      .items()
+      .each(RoomsView.renderRoom);
+    RoomsView.$select.val(Rooms.selected);
+  },
 
+  renderRoom: function(roomName) {
+    RoomsView['$select'].append($('<option>').val(roomName).text(roomName));
+  },
+
+
+  handleChange: function(event) {
+    Rooms.selected = RoomsView.$select.val();
+    MessagesView.render();
+  },
+
+  handleClick: function(event) {
+    var roomname = prompt('Enter room name');
+    if (roomname) {
+      Rooms.add(roomname, ()=> {
+        RoomsView.render();
+        MessagesView.render();
+      });
+    }
+  }
 };
